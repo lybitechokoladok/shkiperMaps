@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Map</title>
-    <link href='//fonts.googleapis.com/css?family=Raleway:300,400,700' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:100,300,400,700,900' rel='stylesheet' type='text/css'>
-</head>
-<style>
+    <link
+      href="//fonts.googleapis.com/css?family=Raleway:300,400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Open+Sans:100,300,400,700,900"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <style>
     html {
-        text-align: center;
-        font-family: "Open Sans", Helvetica, sans-serif;
+      text-align: center;
+      font-family: "Open Sans", Helvetica, sans-serif;
     }
 
     body {
-        width: 100%;
-        height: 100%;
+      width: 100%;
+      height: 100%;
     }
 
     * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Open Sans", Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Open Sans", Helvetica, sans-serif;
     }
 
     div,
     img,
     footer {
-        position: relative;
-        box-sizing: border-box;
+      position: relative;
+      box-sizing: border-box;
     }
 
     h1,
@@ -39,183 +46,248 @@
     h4,
     h5,
     h6 {
-        margin-bottom: 20px;
-        font-family: "Raleway", Helvetica, sans-serif;
-        font-weight: 300;
-        color: #666;
+      margin-bottom: 20px;
+      font-family: "Raleway", Helvetica, sans-serif;
+      font-weight: 300;
+      color: #666;
     }
 
     p {
-        font-size: 12pt;
-        margin-bottom: 12pt;
+      font-size: 12pt;
+      margin-bottom: 12pt;
     }
 
     a {
-        -webkit-transition: color 0.25s ease-in-out;
-        transition: color 0.25s ease-in-out;
-        font-family: "Raleway", Helvetica, sans-serif;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: #dff3fd;
+      -webkit-transition: color 0.25s ease-in-out;
+      transition: color 0.25s ease-in-out;
+      font-family: "Raleway", Helvetica, sans-serif;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #dff3fd;
     }
 
     a:visited {
-        color: #dff3fd;
+      color: #dff3fd;
     }
 
     li.active a,
     a:hover,
     a:active {
-        color: #e5e5e5;
+      color: #e5e5e5;
     }
 
     .centered {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
     }
 
     .centered-y {
-        position: absolute;
-        width: 100%;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
     }
 
     .distribution-map {
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        background-color: gainsboro;
-        position: relative;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      background-color: gainsboro;
+      position: relative;
     }
 
-    .distribution-map>img {
-        width: 100%;
-        position: relative;
-        margin: 0;
-        padding: 0;
+    .distribution-map > img {
+      width: 100%;
+      position: relative;
+      margin: 0;
+      padding: 0;
     }
 
     .distribution-map .map-point {
-        cursor: pointer;
-        outline: none;
-        z-index: 0;
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        border-radius: 20px;
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-        opacity: 0.8;
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        -moz-transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
-        -o-transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
-        -webkit-transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out, height 0.25s ease-in-out, z-index 0.25s ease-in-out;
-        -webkit-transition-delay: 0.25s, 0.25s, 0.25s, 0.25s;
-        -webkit-transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
-        transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
-        background: #3CD043;
-        border: 4px solid #fff;
+      cursor: pointer;
+      outline: none;
+      z-index: 0;
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+      opacity: 0.8;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      -moz-transition: opacity 0.25s ease-in-out 0.25s,
+        width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s,
+        z-index 0.25s ease-in-out 0.25s;
+      -o-transition: opacity 0.25s ease-in-out 0.25s,
+        width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s,
+        z-index 0.25s ease-in-out 0.25s;
+      -webkit-transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out,
+        height 0.25s ease-in-out, z-index 0.25s ease-in-out;
+      -webkit-transition-delay: 0.25s, 0.25s, 0.25s, 0.25s;
+      -webkit-transition: opacity 0.25s ease-in-out 0.25s,
+        width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s,
+        z-index 0.25s ease-in-out 0.25s;
+      transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s,
+        height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+      background: #3cd043;
+      border: 4px solid #fff;
     }
 
     .distribution-map .map-point .content {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-        opacity: 0;
-        -webkit-transition: opacity 0.25s ease-in-out;
-        transition: opacity 0.25s ease-in-out;
-        width: 100%;
-        height: 100%;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        transform: translateX(-50%);
-        overflow: overlay;
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+      opacity: 0;
+      -webkit-transition: opacity 0.25s ease-in-out;
+      transition: opacity 0.25s ease-in-out;
+      width: 100%;
+      height: 100%;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      overflow: overlay;
     }
 
     .distribution-map .map-point:active,
     .distribution-map .map-point:focus {
-        margin: 0;
-        padding: 0;
-        filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
-        opacity: 1;
-        width: 300px;
-        height: 220px;
-        color: #e5e5e5;
-        z-index: 1;
-        -webkit-transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out, height 0.25s ease-in-out;
-        transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out, height 0.25s ease-in-out;
-        margin-top: 80px;
+      margin: 0;
+      padding: 0;
+      filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+      opacity: 1;
+      width: 300px;
+      height: 220px;
+      color: #e5e5e5;
+      z-index: 1;
+      -webkit-transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out,
+        height 0.25s ease-in-out;
+      transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out,
+        height 0.25s ease-in-out;
+      margin-top: 80px;
+      margin-left: 80px;
     }
 
     .distribution-map .map-point:active .content,
     .distribution-map .map-point:focus .content {
-        filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
-        opacity: 1;
-        -moz-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
-        -o-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
-        -webkit-transition: opacity 0.25s ease-in-out, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
-        -webkit-transition-delay: 0.25s, 0s, 0s;
-        -webkit-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
-        transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
-        overflow: hidden;
+      filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+      opacity: 1;
+      -moz-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out,
+        overflow 0.25s ease-in-out;
+      -o-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out,
+        overflow 0.25s ease-in-out;
+      -webkit-transition: opacity 0.25s ease-in-out, height 0.25s ease-in-out,
+        overflow 0.25s ease-in-out;
+      -webkit-transition-delay: 0.25s, 0s, 0s;
+      -webkit-transition: opacity 0.25s ease-in-out 0.25s,
+        height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+      transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out,
+        overflow 0.25s ease-in-out;
+      overflow: hidden;
     }
 
     .distribution-map .map-point:active .content a:hover,
     .distribution-map .map-point:active .content a:active,
     .distribution-map .map-point:focus .content a:hover,
     .distribution-map .map-point:focus .content a:active {
-        color: #afe1fa;
+      color: #afe1fa;
     }
 
     .map {
-        z-index: 0;
-        width: 100%;
-        height: 100%;
-        margin: 20px;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      margin: 20px;
     }
-</style>
+  </style>
 
-<body>
+  <body>
     <div class="distribution-map">
-        <img src="map.svg" alt="map" class="map">
-        <button class="map-point" style="top:3.5%;right:1.3%">
-            <div class="content">
-                <div class="centered-y">
-                    <h2>ККЭП</h2>
-                    <p>Родина программистов России (шарага). Здесь Бога нет</p>
-                </div>
-            </div>
-        </button>
-        <button class="map-point" style="top:4%;right:11%;">
-            <div class="content">
-                <div class="centered-y">
-                    <h2>Академия маркетинга ИМСИТ</h2>
-                    <p>Фууу, ИМСИТ, фууу (осуждаем)</p>
-                </div>
-            </div>
-        </button>
-        <button class="map-point" style="top:18%;left:56%">
-            <div class="content">
-                <div class="centered-y">
-                    <h2>Крафтовое пиво</h2>
-                    <p>Место сбора нефоров</p>
-                </div>
-            </div>
-        </button>
-        <button class="map-point" style="top:43%;left:50%">
-            <div class="content">
-                <div class="centered-y">
-                    <h2>Чистяковская роща</h2>
-                    <p>Один из старейших, и вместе с тем самый молодой парк Краснодара</p>
-                </div>
-            </div>
-        </button>
+      <img src="map.svg" alt="map" class="map" />
+      <button class="map-point" style="top: 3.5%; right: 1.3%">
+        <div class="content">
+          <div class="centered-y">
+            <h2>ККЭП</h2>
+            <p>Родина программистов России (шарага). Здесь Бога нет</p>
+          </div>
+        </div>
+      </button>
+      <button class="map-point" style="top: 4%; right: 11%">
+        <div class="content">
+          <div class="centered-y">
+            <h2>Академия маркетинга ИМСИТ</h2>
+            <p>Фууу, ИМСИТ, фууу (осуждаем)</p>
+          </div>
+        </div>
+      </button>
+      <button class="map-point" style="top: 18%; left: 56%">
+        <div class="content">
+          <div class="centered-y">
+            <h2>Крафтовое пиво</h2>
+            <p>Место сбора нефоров</p>
+          </div>
+        </div>
+      </button>
+      <button class="map-point" style="top: 43%; left: 50%">
+        <div class="content">
+          <div class="centered-y">
+            <h2>Чистяковская роща</h2>
+            <p>
+              Один из старейших, и вместе с тем самый молодой парк Краснодара
+            </p>
+          </div>
+        </div>
+      </button>
+      <button class="map-point" style="top: 57%; left: 25%">
+        <div class="content">
+          <div class="centered-y">
+            <h2>Екатерининский зал</h2>
+            <p>Горько!</p>
+          </div>
+        </div>
+      </button>
+      <button class="map-point" style="top: 20%; left: 8%">
+        <div class="content">
+          <div class="centered-y">
+            <h2>Офицерский сквер</h2>
+            <p>Деды воевали!</p>
+          </div>
+        </div>
+      </button>
+      <button class="map-point" style="bottom: 2%; left: 2%">
+        <div class="content">
+          <div class="centered-y">
+            <h2>Кинотеатр Аврора</h2>
+            <p>Так и не отреставрировали</p>
+          </div>
+        </div>
+      </button>
+      <button class="map-point" style="bottom: 15%; right: 35%">
+        <div class="content">
+          <div class="centered-y">
+            <h2>Верёвочный парк</h2>
+            <p>Поедем! Повесим!</p>
+          </div>
+        </div>
+      </button>
+      <button class="map-point" style="bottom: 20%; right: 40%">
+        <div class="content">
+          <div class="centered-y">
+            <h2>Карусель</h2>
+            <p>Эта песня сказки и веселье!</p>
+          </div>
+        </div>
+      </button>
+      <button class="map-point" style="bottom: 50%; right: 27%">
+        <div class="content">
+          <div class="centered-y">
+            <h2>Мемориал жертвам фашизма</h2>
+            <p>Памятник гражданским лицам, погибшим в годы ВОВ</p>
+          </div>
+        </div>
+      </button>
     </div>
-</body>
-
+  </body>
 </html>

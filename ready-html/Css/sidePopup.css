@@ -23,6 +23,12 @@
   transform:translatex(50px) rotate(-90deg);
   cursor:pointer;
 }
+
+.contact-btn p{
+	rotate: 90deg;
+	transition: transform .4s ease-in-out;
+}
+
 #side-box
 {
     padding: 10px;

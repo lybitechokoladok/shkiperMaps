@@ -1,0 +1,62 @@
+#sticky-side
+{
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  right:0;
+  display: flex;
+  align-items: center;
+  
+
+}
+
+.contact-btn{
+  height:50px;
+  width:150px;
+  background-color:#3F51B5;
+  color:#fff;
+  line-height:50px;
+  text-align:center;
+  font-size:16px;
+  font-weight:bold;
+  text-transform:uppercase;
+  transform:translatex(50px) rotate(-90deg);
+  cursor:pointer;
+}
+#side-box
+{
+    padding: 10px;
+    border: 1px solid #e1e1e1;
+    border-right: 0;
+    height: auto;
+    max-height: calc(100vh - 20px);
+    overflow-y: auto;
+    background: #fff;
+    max-width: 400px;
+    margin-right: -400px;
+    z-index: 9999;
+    transition: all .5s;
+      box-sizing: border-box;
+}
+#side-box .side-header
+{
+  display:block;
+  background-color:#3F51B5;
+  padding:0 15px;
+  font-size:20px;
+  color:#fff;height:40px;
+  line-height:40px;
+  position:relative;
+}
+#side-box .side-header i{
+  font-size:20px;
+  position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  cursor:pointer;
+  
+}
+.open-box {
+    margin-right: 0 !important;
+}
